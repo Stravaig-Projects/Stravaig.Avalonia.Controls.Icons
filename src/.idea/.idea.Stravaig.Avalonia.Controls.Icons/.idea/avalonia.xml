@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="Stravaig.Icons.Example/App.axaml" value="Stravaig.Icons.Example/Stravaig.Icons.Example.csproj" />
+        <entry key="Stravaig.Icons.Example/Styles/AppDefaultStyles.axaml" value="Stravaig.Icons.Example/Stravaig.Icons.Example.csproj" />
+      </map>
+    </option>
+  </component>
+</project>
