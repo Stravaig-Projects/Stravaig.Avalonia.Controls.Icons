@@ -2,15 +2,24 @@
 $iconPath = "$PSScriptRoot/../../src/Stravaig.Avalonia.Controls.Icons/Assets/PhosphorIcons"
 
 # Output C# file path
-$outputPath = Join-Path $PSScriptRoot "../../src/Stravaig.Avalonia.Controls.Icons/PhosphorIcons" | Convert-Path 
-$outputPath += "/PhosphorIconName.cs"
+$outputPath = Join-Path $PSScriptRoot "../../src/Stravaig.Avalonia.Controls.Icons/PhosphorIcon" | Convert-Path 
+$enumOutputPath = $outputPath + "/PhosphorIconName.cs"
+$dictionaryOutputPath = $outputPath + "/PhosphorIconEnumToResourceMap-Dictionary.cs"
 
 # Read and parse JSON
 $svgFiles = Get-ChildItem -Path $iconPath -Filter "*.svg" -Recurse -File
 
 $iconData = $svgFiles | ForEach-Object {
     $fileName = $_.BaseName
-    if ($fileName -match '^(.+)-([^-]+)$') {
+    $directory = $_.Directory.Name
+    
+    if ($directory -eq 'regular') {
+        [PSCustomObject]@{
+            BaseName = $fileName
+            Style = 'regular'
+        }
+    }
+    elseif ($fileName -match '^(.+)-([^-]+)$') {
         [PSCustomObject]@{
             BaseName = $matches[1]
             Style = $matches[2]
@@ -22,17 +31,6 @@ $iconData = $svgFiles | ForEach-Object {
         Styles = ($_.Group | Select-Object -ExpandProperty Style | Sort-Object -Unique)
     }
 }
-
-# $json = @{
-#     icons = $iconData | ForEach-Object {
-#         @{
-#             properties = @{
-#                 name = $_.Name
-#                 styles = $_.Styles
-#             }
-#         }
-#     }
-# }
 
 # Extract icon name and code, format as required
 $entries = foreach ($icon in $iconData) {
@@ -53,27 +51,50 @@ $entries = foreach ($icon in $iconData) {
 }
 
 # Generate C# dictionary entries
-$dictEntries = $entries | Sort-Object -Property Name | ForEach-Object {
+$enumEntries = $entries | Sort-Object -Property Name | ForEach-Object {
     "        /// <Summary>`n" +
-    "        /// Phosphor icon '$($_.RawName)', available in styles $($_.Styles).`n" +
+    "        /// Phosphor icon '$($_.RawName)', available in $($_.Styles).`n" +
     "        /// </Summary>`n" +
-    "        $($_.Name) = $($_.Value),`n"
+    "        $($_.Name),`n"
 }
 
-# Write C# file
+$dictEntries = $entries | ForEach-Object {
+    "            { PhosphorIconName.$($_.Name), `"$($_.RawName)`" },"
+}
+
+# Write C# file for enum
 @"
 // Auto-generated file. Do not modify directly.
-// Use helpers/Phosphor-Icons/ConvertToEnum.ps1 to regenerate.
+// Use helpers/PhosphorIcons/ConvertToEnum.ps1 to regenerate.
 
-// Some icon codes have multiple names, leading to duplicate enum values which triggers CA1069 warning.
-#pragma warning disable CA1069
-
-namespace Stravaig.Controls.Icons;
+namespace Stravaig.Avalonia.Controls.Icons;
 
 public enum PhosphorIconName
 {
-$($dictEntries -join "`n")
+$($enumEntries -join "`n")
 }
-"@ | Set-Content $outputPath
+"@ | Set-Content $enumOutputPath
 
-Write-Host "C# file generated at $outputPath"
+Write-Host "C# file generated at $enumOutputPath"
+
+# Write C# file for the helper class to convert the enum to the resource name.
+
+@"
+// Auto-generated file. Do not modify directly.
+// Use helpers/PhosphorIcons/ConvertToEnum.ps1 to regenerate.
+
+using System.Collections.Frozen;
+using System.Collections.Generic;
+
+namespace Stravaig.Avalonia.Controls.Icons;
+
+internal static partial class PhosphorIconEnumToResourceMap
+{
+    private static readonly FrozenDictionary<PhosphorIconName, string> IconMap =
+        new Dictionary<PhosphorIconName, string>
+        {
+$($dictEntries -join "`n")
+        }.ToFrozenDictionary();
+}
+"@ | Set-Content $dictionaryOutputPath
+Write-Host "C# file generated at $enumOutputPath"
