@@ -65,7 +65,7 @@ jobs:
           echo "Is Preview: $STRAVAIG_IS_PREVIEW"
           echo "Is Stable: $STRAVAIG_IS_STABLE"
           
-      - uses: actions/setup-dotnet@v3
+      - uses: actions/setup-dotnet@v5
         name: Setup .NET 8, 9 and 10.0
         with:
           dotnet-version: |
