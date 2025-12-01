@@ -24,7 +24,9 @@
                 <TextBlock Classes="H1" Text="Phosphor Icons"/>
             </Expander.Header>
             <StackPanel Orientation="Vertical">
-                <StackPanel Orientation="Horizontal">
+                <StackPanel
+                    Margin="5"
+                    Orientation="Horizontal">
                     <TextBlock
                         Margin="5"
                         VerticalAlignment="Center"
@@ -50,7 +52,9 @@
                     </ComboBox>
                 </StackPanel>
 
-                <StackPanel Orientation="Horizontal">
+                <StackPanel
+                    Margin="5"
+                    Orientation="Horizontal">
                     <TextBlock
                         Margin="5"
                         Classes="H2"
@@ -80,9 +84,29 @@
                         Text="{Binding RgbColour}"/>
                 </StackPanel>
 
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Classes="H2" Margin="5" Text="Filter:"/>
-
+                <StackPanel
+                    Margin="5"
+                    Orientation="Horizontal">
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        Classes="H2"
+                        Margin="5"
+                        Text="Filter:"/>
+                    <TextBox
+                        VerticalAlignment="Center"
+                        MinWidth="256"
+                        Text="{Binding Filter}"/>
+                    <TextBlock
+                        Margin="5"
+                        VerticalAlignment="Center">
+                        <TextBlock.Text>
+                            <MultiBinding
+                                StringFormat="Showing {0} of {1} icons.">
+                                <Binding Path="FilterCount"/>
+                                <Binding Path="Icons.Count"/>
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
                 </StackPanel>
 
                 <ItemsControl Name="IconsItemsControl" ItemsSource="{Binding Icons}">
@@ -94,6 +118,7 @@
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <Border
+                                IsVisible="{Binding IsVisible}"
                                 Margin="5"
                                 CornerRadius="5"
                                 BorderBrush="Gray"
