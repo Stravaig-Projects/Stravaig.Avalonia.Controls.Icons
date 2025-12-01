@@ -2,5 +2,5 @@
 
 public partial class MainWindowViewModel : ViewModelBase
 {
-
+    public PhosphorIconDemoViewModel PhosphorIconDemo { get; } = new();
 }

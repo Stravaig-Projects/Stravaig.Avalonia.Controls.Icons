@@ -15,7 +15,10 @@
     </Design.DataContext>
 
     <StackPanel Orientation="Vertical">
-        <Expander IsExpanded="True">
+        <Expander
+            Name="PhosphorExpander"
+            IsExpanded="{Binding IsExpanded}"
+            HorizontalAlignment="Stretch">
             <Expander.Header>
                 <TextBlock Classes="H1" Text="Phosphor Icons"/>
             </Expander.Header>
@@ -27,7 +30,7 @@
                         Classes="H2"
                         Text="Style"/>
                     <ComboBox ItemsSource="{Binding IconTypes}"
-                              SelectedValue="{Binding SelectedIconTypeName}">
+                              SelectedIndex="{Binding SelectedIconTypeIndex}">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
@@ -46,32 +49,35 @@
                     </ComboBox>
                 </StackPanel>
 
-                <WrapPanel>
-                    <ItemsControl ItemsSource="{Binding Icons}">
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <Border
-                                    Margin="5"
-                                    CornerRadius="5"
-                                    BorderBrush="Gray"
-                                    BorderThickness="2"
-                                    Padding="5">
-                                    <StackPanel Orientation="Vertical">
-                                        <icons:PhosphorIcon
-                                            IconName="{Binding Key}"
-                                            IconType="Duotone"
-                                            Width="24"
-                                            Height="24"/>
-                                        <TextBlock
-
-                                            HorizontalAlignment="Center"
-                                            Text="{Binding Value}"/>
-                                    </StackPanel>
-                                </Border>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
-                </WrapPanel>
+                <ItemsControl Name="IconsItemsControl" ItemsSource="{Binding Icons}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel></WrapPanel>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border
+                                Margin="5"
+                                CornerRadius="5"
+                                BorderBrush="Gray"
+                                BorderThickness="2"
+                                Padding="5"
+                                HorizontalAlignment="Left">
+                                <StackPanel Orientation="Vertical">
+                                    <icons:PhosphorIcon
+                                        IconName="{Binding Key}"
+                                        IconType="{Binding $parent.IconType}"
+                                        Width="24"
+                                        Height="24"/>
+                                    <TextBlock
+                                        HorizontalAlignment="Center"
+                                        Text="{Binding Value}"/>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
             </StackPanel>
         </Expander>
     </StackPanel>
