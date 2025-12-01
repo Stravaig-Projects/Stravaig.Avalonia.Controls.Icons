@@ -16,7 +16,12 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
-    <StackPanel Orientation="Vertical">
-        <views:PhosphorIconDemoView DataContext="{Binding PhosphorIconDemo}"/>
-    </StackPanel>
+    <ScrollViewer
+        VerticalScrollBarVisibility="Auto">
+        <StackPanel
+            Orientation="Vertical">
+            <views:PhosphorIconDemoView
+                DataContext="{Binding PhosphorIconDemo}"/>
+        </StackPanel>
+    </ScrollViewer>
 </Window>
