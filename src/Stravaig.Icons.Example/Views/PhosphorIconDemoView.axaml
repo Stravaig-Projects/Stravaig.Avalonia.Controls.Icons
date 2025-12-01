@@ -5,7 +5,7 @@
              xmlns:icons="clr-namespace:Stravaig.Avalonia.Controls.Icons;assembly=Stravaig.Avalonia.Controls.Icons"
              xmlns:vm="using:Stravaig.Icons.Example.ViewModels"
              x:DataType="vm:PhosphorIconDemoViewModel"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             mc:Ignorable="d" d:DesignWidth="900" d:DesignHeight="600"
              x:Class="Stravaig.Icons.Example.Views.PhosphorIconDemoView"
              Name="PhosphorIconDemo">
 
