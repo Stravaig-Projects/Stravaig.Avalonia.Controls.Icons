@@ -1,7 +1,9 @@
 using System;
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Media;
 using Avalonia.Svg.Skia;
+using Svg.Model;
 
 namespace Stravaig.Avalonia.Controls.Icons;
 
@@ -19,6 +21,10 @@ public class PhosphorIcon : Image
         AvaloniaProperty.Register<PhosphorIcon, PhosphorIconName>(
             nameof(IconName));
 
+    public static readonly StyledProperty<HsvColor> ColorProperty =
+        AvaloniaProperty.Register<PhosphorIcon, HsvColor>(
+            nameof(Color));
+
     public PhosphorIconType IconType
     {
         get => GetValue(IconTypeProperty);
@@ -31,10 +37,17 @@ public class PhosphorIcon : Image
         set => SetValue(IconNameProperty, value);
     }
 
+    public HsvColor Color
+    {
+        get => GetValue(ColorProperty);
+        set => SetValue(ColorProperty, value);
+    }
+
     static PhosphorIcon()
     {
         IconTypeProperty.Changed.AddClassHandler<PhosphorIcon>((x, _) => x.UpdateImageSource());
         IconNameProperty.Changed.AddClassHandler<PhosphorIcon>((x, _) => x.UpdateImageSource());
+        ColorProperty.Changed.AddClassHandler<PhosphorIcon>((x, _) => x.UpdateImageSource());
     }
 
     public PhosphorIcon()
@@ -55,12 +68,16 @@ public class PhosphorIcon : Image
             return;
         }
 
-        // Delegate actual SVG rendering to Avalonia's Image via SvgImage
         try
         {
+            var css = BuildCss();
+            Console.WriteLine($"Loading {resource}\n    with CSS: {css}");
+            var sourceImage = SvgSource.Load(resource);
             var svg = new SvgImage
             {
-                Source = SvgSource.Load(resource),
+                Source = sourceImage,
+                Css = css,
+                //CurrentCss = css,
             };
             Source = svg;
         }
@@ -68,5 +85,12 @@ public class PhosphorIcon : Image
         {
             Source = null;
         }
+    }
+
+    private string BuildCss()
+    {
+        var rgb = Color.ToRgb();
+        var css = $"svg {{ fill: rgb({rgb.R}, {rgb.G}, {rgb.B}); }}";
+        return css;
     }
 }

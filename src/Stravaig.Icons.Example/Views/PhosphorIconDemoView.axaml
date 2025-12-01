@@ -97,6 +97,7 @@
                                 HorizontalAlignment="Left">
                                 <StackPanel Orientation="Vertical">
                                     <icons:PhosphorIcon
+                                        Color="{Binding #PhosphorIconDemo.((vm:PhosphorIconDemoViewModel)DataContext).Colour, FallbackValue=Gray}"
                                         IconName="{Binding Key}"
                                         IconType="{Binding #PhosphorIconDemo.((vm:PhosphorIconDemoViewModel)DataContext).SelectedIconType, FallbackValue={x:Static icons:PhosphorIconType.Regular}}"
                                         Width="{Binding #PhosphorIconDemo.((vm:PhosphorIconDemoViewModel)DataContext).IconSize, FallbackValue=24}"

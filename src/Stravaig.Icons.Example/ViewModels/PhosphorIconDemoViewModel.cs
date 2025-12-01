@@ -36,7 +36,7 @@ public partial class PhosphorIconDemoViewModel : ViewModelBase
         _selectedIconTypeIndex = 0;
         _selectedIconType = IconTypes[0].Key;
         _iconSize = 24;
-        _colour = new HsvColor(Color.FromRgb(0x80, 0x80, 0x80));
+        _colour = new HsvColor(Color.FromRgb(0xFF, 0x00, 0x00));
         _rgbColour = _colour.ToRgb().ToString();
     }
 
@@ -46,7 +46,7 @@ public partial class PhosphorIconDemoViewModel : ViewModelBase
 
     partial void OnColourChanged(HsvColor value)
     {
-        RgbColour = Colour.ToRgb().ToString();
+        RgbColour = value.ToRgb().ToString();
     }
 
     partial void OnSelectedIconTypeIndexChanged(int? value)

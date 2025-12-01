@@ -5,6 +5,7 @@
       <map>
         <entry key="Stravaig.Icons.Example/App.axaml" value="Stravaig.Icons.Example/Stravaig.Icons.Example.csproj" />
         <entry key="Stravaig.Icons.Example/Styles/AppDefaultStyles.axaml" value="Stravaig.Icons.Example/Stravaig.Icons.Example.csproj" />
+        <entry key="Stravaig.Icons.Example/Views/MainWindow.axaml" value="Stravaig.Icons.Example/Stravaig.Icons.Example.csproj" />
         <entry key="Stravaig.Icons.Example/Views/PhosphorIconDemoView.axaml" value="Stravaig.Icons.Example/Stravaig.Icons.Example.csproj" />
       </map>
     </option>
