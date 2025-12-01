@@ -20,8 +20,31 @@
                 <TextBlock Classes="H1" Text="Phosphor Icons"/>
             </Expander.Header>
             <StackPanel Orientation="Vertical">
-                <TextBlock Classes="H2" Text="Style"/>
-                <ComboBox ItemsSource=""></ComboBox>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock
+                        Margin="5"
+                        VerticalAlignment="Center"
+                        Classes="H2"
+                        Text="Style"/>
+                    <ComboBox ItemsSource="{Binding IconTypes}"
+                              SelectedValue="{Binding SelectedIconTypeName}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <icons:PhosphorIcon
+                                        Margin="5"
+                                        Width="16"
+                                        Height="16"
+                                        IconName="Acorn"
+                                        IconType="{Binding Key}"/>
+                                    <TextBlock
+                                        VerticalAlignment="Center"
+                                        Text="{Binding Value}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </StackPanel>
 
                 <WrapPanel>
                     <ItemsControl ItemsSource="{Binding Icons}">
