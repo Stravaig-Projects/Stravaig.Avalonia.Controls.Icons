@@ -1,0 +1,55 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:icons="clr-namespace:Stravaig.Avalonia.Controls.Icons;assembly=Stravaig.Avalonia.Controls.Icons"
+             xmlns:vm="using:Stravaig.Icons.Example.ViewModels"
+             x:DataType="vm:PhosphorIconDemoViewModel"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Stravaig.Icons.Example.Views.PhosphorIconDemoView">
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:PhosphorIconDemoViewModel/>
+    </Design.DataContext>
+
+    <StackPanel Orientation="Vertical">
+        <Expander IsExpanded="True">
+            <Expander.Header>
+                <TextBlock Classes="H1" Text="Phosphor Icons"/>
+            </Expander.Header>
+            <StackPanel Orientation="Vertical">
+                <TextBlock Classes="H2" Text="Style"/>
+                <ComboBox ItemsSource=""></ComboBox>
+
+                <WrapPanel>
+                    <ItemsControl ItemsSource="{Binding Icons}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border
+                                    Margin="5"
+                                    CornerRadius="5"
+                                    BorderBrush="Gray"
+                                    BorderThickness="2"
+                                    Padding="5">
+                                    <StackPanel Orientation="Vertical">
+                                        <icons:PhosphorIcon
+                                            IconName="{Binding Key}"
+                                            IconType="Duotone"
+                                            Width="24"
+                                            Height="24"/>
+                                        <TextBlock
+
+                                            HorizontalAlignment="Center"
+                                            Text="{Binding Value}"/>
+                                    </StackPanel>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </WrapPanel>
+            </StackPanel>
+        </Expander>
+    </StackPanel>
+</UserControl>
