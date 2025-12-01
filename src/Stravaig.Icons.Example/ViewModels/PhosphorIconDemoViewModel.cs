@@ -16,13 +16,14 @@ public partial class PhosphorIconDemoViewModel : ViewModelBase
     [ObservableProperty]
     private int? _selectedIconTypeIndex;
 
+    [ObservableProperty]
     private PhosphorIconType _selectedIconType;
 
     partial void OnSelectedIconTypeIndexChanged(int? value)
     {
         if (value.HasValue)
-            _selectedIconType = IconTypes[value.Value].Key;
-        Trace.WriteLine($"Selected Icon Type Index Changed to {value}. Type is now {_selectedIconType}.");
+            SelectedIconType = IconTypes[value.Value].Key;
+        Trace.WriteLine($"Selected Icon Type Index Changed to {value}. Type is now {SelectedIconType}.");
     }
 
     public PhosphorIconDemoViewModel()
