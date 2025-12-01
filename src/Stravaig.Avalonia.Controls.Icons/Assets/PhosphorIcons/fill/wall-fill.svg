@@ -2,7 +2,7 @@
   <rect width="256" height="256" fill="none" />
   <path d="M136,92h92a4,4,0,0,0,4-4V56a8,8,0,0,0-8-8H140a4,4,0,0,0-4,4Z" fill="currentColor" />
   <path d="M184,152h44a4,4,0,0,0,4-4V112a4,4,0,0,0-4-4H184Z" fill="currentColor" />
-  <rect x="88" y="108" width="80" height="44" />
+  <rect x="88" y="108" width="80" height="44" fill="currentColor" />
   <path d="M72,108H28a4,4,0,0,0-4,4v36a4,4,0,0,0,4,4H72Z" fill="currentColor" />
   <path d="M136,168v36a4,4,0,0,0,4,4h84a8,8,0,0,0,8-8V172a4,4,0,0,0-4-4Z" fill="currentColor" />
   <path d="M120,92V52a4,4,0,0,0-4-4H32a8,8,0,0,0-8,8V88a4,4,0,0,0,4,4Z" fill="currentColor" />
