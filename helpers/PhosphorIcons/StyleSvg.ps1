@@ -40,20 +40,40 @@ foreach ($file in $svgFiles) {
     }
 
     # All rect elements with an opacity attribute should get fill="currentColor"
-    $pathElements = $svgXml.GetElementsByTagName("rect")
-    foreach ($path in $pathElements) {
-        if ($path.HasAttribute("opacity") -and -not $path.HasAttribute("fill")) {
-            $path.SetAttribute("fill", "currentColor")
+    $rectElements = $svgXml.GetElementsByTagName("rect")
+    foreach ($rect in $rectElements) {
+        if ($rect.HasAttribute("opacity") -and -not $rect.HasAttribute("fill")) {
+            $rect.SetAttribute("fill", "currentColor")
             Write-Host "Added <rect ... fill=`"currentColor`"> in: $($file.FullName)"
         }
     }
 
     # All polygon elements with an opacity attribute should get fill="currentColor"
-    $pathElements = $svgXml.GetElementsByTagName("polygon")
-    foreach ($path in $pathElements) {
-        if ($path.HasAttribute("opacity") -and -not $path.HasAttribute("fill")) {
-            $path.SetAttribute("fill", "currentColor")
+    $polygonElements = $svgXml.GetElementsByTagName("polygon")
+    foreach ($polygon in $polygonElements) {
+        if ($polygon.HasAttribute("opacity") -and -not $polygon.HasAttribute("fill")) {
+            $polygon.SetAttribute("fill", "currentColor")
             Write-Host "Added <polygon ... fill=`"currentColor`"> in: $($file.FullName)"
+        }
+    }
+
+    # For any file where the name ends with -fill.svg...
+    if ($file.Name -like "*-fill.svg") {
+        # ... ensure all path elements have fill="currentColor"
+        $pathElements = $svgXml.GetElementsByTagName("path")
+        foreach ($path in $pathElements) {
+            if (-not $path.HasAttribute("fill")) {
+                $path.SetAttribute("fill", "currentColor")
+                Write-Host "Added <path ... fill=`"currentColor`"> in: $($file.FullName)"
+            }
+        }
+        # ensure rect elements have fill="currentColor"
+        $rectElements = $svgXml.GetElementsByTagName("rect")
+        foreach ($rect in $rectElements) {
+            if (-not $rect.HasAttribute("fill")) {
+                $rect.SetAttribute("fill", "currentColor")
+                Write-Host "Added <rect ... fill=`"currentColor`"> in: $($file.FullName)"
+            }
         }
     }
 
