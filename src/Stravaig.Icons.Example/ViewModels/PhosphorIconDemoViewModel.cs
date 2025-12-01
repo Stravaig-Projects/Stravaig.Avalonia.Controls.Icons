@@ -1,4 +1,5 @@
 using Avalonia.Controls;
+using Avalonia.Media;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Stravaig.Avalonia.Controls.Icons;
 using System;
@@ -22,12 +23,11 @@ public partial class PhosphorIconDemoViewModel : ViewModelBase
     [ObservableProperty]
     private int _iconSize;
 
-    partial void OnSelectedIconTypeIndexChanged(int? value)
-    {
-        if (value.HasValue)
-            SelectedIconType = IconTypes[value.Value].Key;
-        Trace.WriteLine($"Selected Icon Type Index Changed to {value}. Type is now {SelectedIconType}.");
-    }
+    [ObservableProperty]
+    private HsvColor _colour;
+
+    [ObservableProperty]
+    private string _rgbColour;
 
     public PhosphorIconDemoViewModel()
     {
@@ -36,11 +36,24 @@ public partial class PhosphorIconDemoViewModel : ViewModelBase
         _selectedIconTypeIndex = 0;
         _selectedIconType = IconTypes[0].Key;
         _iconSize = 24;
+        _colour = new HsvColor(Color.FromRgb(0x80, 0x80, 0x80));
+        _rgbColour = _colour.ToRgb().ToString();
     }
 
     public List<KeyValuePair<PhosphorIconName, string>> Icons { get; } = Enum.GetValues<PhosphorIconName>().Select(n => new KeyValuePair<PhosphorIconName, string>(n, n.ToString())).ToList();
 
     public List<KeyValuePair<PhosphorIconType, string>> IconTypes { get; } = Enum.GetValues<PhosphorIconType>().Select(t => new KeyValuePair<PhosphorIconType, string>(t, t.ToString())).ToList();
 
+    partial void OnColourChanged(HsvColor value)
+    {
+        RgbColour = Colour.ToRgb().ToString();
+    }
+
+    partial void OnSelectedIconTypeIndexChanged(int? value)
+    {
+        if (value.HasValue)
+            SelectedIconType = IconTypes[value.Value].Key;
+        Trace.WriteLine($"Selected Icon Type Index Changed to {value}. Type is now {SelectedIconType}.");
+    }
 
 }
