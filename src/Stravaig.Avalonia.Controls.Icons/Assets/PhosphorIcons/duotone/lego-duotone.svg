@@ -2,7 +2,7 @@
   <rect width="256" height="256" fill="none" />
   <line x1="132.19" y1="69.9" x2="101.56" y2="85.22" opacity="0.2" />
   <line x1="16" y1="128" x2="52.19" y2="109.9" opacity="0.2" />
-  <g opacity="0.2">
+  <g opacity="0.2" fill="currentColor">
     <polygon points="240 80 240 144 80 224 80 160 240 80" />
   </g>
   <line x1="80" y1="160" x2="80" y2="224" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />
