@@ -19,6 +19,9 @@ public partial class PhosphorIconDemoViewModel : ViewModelBase
     [ObservableProperty]
     private PhosphorIconType _selectedIconType;
 
+    [ObservableProperty]
+    private int _iconSize;
+
     partial void OnSelectedIconTypeIndexChanged(int? value)
     {
         if (value.HasValue)
@@ -32,6 +35,7 @@ public partial class PhosphorIconDemoViewModel : ViewModelBase
         _isExpanded = Design.IsDesignMode;
         _selectedIconTypeIndex = 0;
         _selectedIconType = IconTypes[0].Key;
+        _iconSize = 24;
     }
 
     public List<KeyValuePair<PhosphorIconName, string>> Icons { get; } = Enum.GetValues<PhosphorIconName>().Select(n => new KeyValuePair<PhosphorIconName, string>(n, n.ToString())).ToList();

@@ -50,6 +50,24 @@
                     </ComboBox>
                 </StackPanel>
 
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock
+                        Margin="5"
+                        Classes="H2"
+                        VerticalAlignment="Center"
+                        Text="Size:"/>
+                    <Slider
+                        HorizontalAlignment="Stretch"
+                        Minimum="8"
+                        Maximum="256"
+                        MinWidth="256"
+                        Value="{Binding IconSize}"/>
+                    <TextBlock
+                        Margin="5"
+                        Text="{Binding IconSize}"
+                        VerticalAlignment="Center"/>
+                </StackPanel>
+
                 <ItemsControl Name="IconsItemsControl" ItemsSource="{Binding Icons}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
@@ -69,8 +87,8 @@
                                     <icons:PhosphorIcon
                                         IconName="{Binding Key}"
                                         IconType="{Binding #PhosphorIconDemo.((vm:PhosphorIconDemoViewModel)DataContext).SelectedIconType, FallbackValue={x:Static icons:PhosphorIconType.Regular}}"
-                                        Width="24"
-                                        Height="24"/>
+                                        Width="{Binding #PhosphorIconDemo.((vm:PhosphorIconDemoViewModel)DataContext).IconSize, FallbackValue=24}"
+                                        Height="{Binding #PhosphorIconDemo.((vm:PhosphorIconDemoViewModel)DataContext).IconSize, FallbackValue=24}"/>
                                     <TextBlock
                                         HorizontalAlignment="Center"
                                         Text="{Binding Value}"/>
