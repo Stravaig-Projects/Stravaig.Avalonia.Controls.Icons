@@ -90,7 +90,7 @@ public class PhosphorIcon : Image
     private string BuildCss()
     {
         var rgb = Color.ToRgb();
-        var css = $"svg {{ fill: rgb({rgb.R}, {rgb.G}, {rgb.B}); }}";
+        var css = $".Stravaig {{ color: rgb({rgb.R}, {rgb.G}, {rgb.B}); }}";
         return css;
     }
 }

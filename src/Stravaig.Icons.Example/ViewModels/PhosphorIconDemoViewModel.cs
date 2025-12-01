@@ -33,8 +33,8 @@ public partial class PhosphorIconDemoViewModel : ViewModelBase
     {
         // In design mode, expand the tree by default so that is open in the designer.
         _isExpanded = Design.IsDesignMode;
-        _selectedIconTypeIndex = 0;
-        _selectedIconType = IconTypes[0].Key;
+        _selectedIconTypeIndex = 2;
+        _selectedIconType = IconTypes[2].Key;
         _iconSize = 24;
         _colour = new HsvColor(Color.FromRgb(0xFF, 0x00, 0x00));
         _rgbColour = _colour.ToRgb().ToString();

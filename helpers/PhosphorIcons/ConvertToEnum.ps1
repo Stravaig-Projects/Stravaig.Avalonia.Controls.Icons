@@ -1,4 +1,4 @@
-# Path to the selection.json from the Phosphor Icons repository
+# Path to the Phosphor Icons
 $iconPath = "$PSScriptRoot/../../src/Stravaig.Avalonia.Controls.Icons/Assets/PhosphorIcons"
 
 # Output C# file path
