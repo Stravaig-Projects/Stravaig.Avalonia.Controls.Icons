@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" class="Stravaig">
   <rect width="256" height="256" fill="none" />
-  <ellipse cx="200" cy="136" rx="40" ry="64" opacity="0.2" />
+  <ellipse cx="200" cy="136" rx="40" ry="64" opacity="0.2" fill="currentColor" />
   <circle cx="200" cy="136" r="12" fill="currentColor" />
   <ellipse cx="200" cy="136" rx="40" ry="64" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />
   <polyline points="96 72 136 32 168 32" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />

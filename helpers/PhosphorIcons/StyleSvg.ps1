@@ -30,12 +30,30 @@ foreach ($file in $svgFiles) {
         }
     }
 
+    # All ellipse elements should get the fill="currentColor" attribute
+    $ellipseElements = $svgXml.GetElementsByTagName("ellipse")
+    foreach ($ellipse in $ellipseElements) {
+        if (-not $ellipse.HasAttribute("fill")) {
+            $ellipse.SetAttribute("fill", "currentColor")
+            Write-Host "Added <ellipse ... fill=`"currentColor`"> in: $($file.FullName)"
+        }
+    }
+
     # All path elements with an opacity attribute should get fill="currentColor"
     $pathElements = $svgXml.GetElementsByTagName("path")
     foreach ($path in $pathElements) {
         if ($path.HasAttribute("opacity") -and -not $path.HasAttribute("fill")) {
             $path.SetAttribute("fill", "currentColor")
             Write-Host "Added <path ... fill=`"currentColor`"> in: $($file.FullName)"
+        }
+    }
+
+    # All g elements with an opacity attribute should get fill="currentColor"
+    $gElements = $svgXml.GetElementsByTagName("g")
+    foreach ($g in $gElements) {
+        if ($g.HasAttribute("opacity") -and -not $g.HasAttribute("fill")) {
+            $g.SetAttribute("fill", "currentColor")
+            Write-Host "Added <g ... fill=`"currentColor`"> in: $($file.FullName)"
         }
     }
 

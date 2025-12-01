@@ -80,6 +80,11 @@
                         Text="{Binding RgbColour}"/>
                 </StackPanel>
 
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Classes="H2" Margin="5" Text="Filter:"/>
+
+                </StackPanel>
+
                 <ItemsControl Name="IconsItemsControl" ItemsSource="{Binding Icons}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
