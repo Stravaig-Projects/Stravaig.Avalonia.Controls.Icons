@@ -71,7 +71,6 @@ public class PhosphorIcon : Image
         try
         {
             var css = BuildCss();
-            Console.WriteLine($"Loading {resource}\n    with CSS: {css}");
             var sourceImage = SvgSource.Load(resource);
             var svg = new SvgImage
             {

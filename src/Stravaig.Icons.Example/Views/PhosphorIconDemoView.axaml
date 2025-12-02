@@ -66,22 +66,43 @@
                         Maximum="256"
                         MinWidth="256"
                         Value="{Binding IconSize}"/>
-                    <TextBlock
+                    <NumericUpDown
                         Margin="5"
-                        Text="{Binding IconSize}"
-                        VerticalAlignment="Center"/>
+                        Minimum="8"
+                        Maximum="256"
+                        VerticalAlignment="Center"
+                        FormatString="F0"
+                        Width="150"
+                        TextAlignment="Center"
+                        Value="{Binding IconSize}" />
                 </StackPanel>
 
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Classes="H2" Margin="5" Text="Colour:"/>
+                <StackPanel
+                    Margin="5"
+                    Orientation="Horizontal">
+                    <TextBlock Classes="H2" Margin="5" Text="Icon Colour:"/>
                     <ColorPicker
                         ColorModel="Rgba"
                         Width="200"
-                        HsvColor="{Binding Colour}" />
+                        HsvColor="{Binding IconColour}" />
                     <TextBlock
                         Margin="5"
                         VerticalAlignment="Center"
-                        Text="{Binding RgbColour}"/>
+                        Text="{Binding IconRgbColour}"/>
+                </StackPanel>
+
+                <StackPanel
+                    Margin="5"
+                    Orientation="Horizontal">
+                    <TextBlock Classes="H2" Margin="5" Text="Background Colour:"/>
+                    <ColorPicker
+                        ColorModel="Rgba"
+                        Width="200"
+                        HsvColor="{Binding BackgroundColour}" />
+                    <TextBlock
+                        Margin="5"
+                        VerticalAlignment="Center"
+                        Text="{Binding BackgroundRgbColour}"/>
                 </StackPanel>
 
                 <StackPanel
@@ -126,12 +147,19 @@
                                 Padding="5"
                                 HorizontalAlignment="Left">
                                 <StackPanel Orientation="Vertical">
-                                    <icons:PhosphorIcon
-                                        Color="{Binding #PhosphorIconDemo.((vm:PhosphorIconDemoViewModel)DataContext).Colour, FallbackValue=Gray}"
-                                        IconName="{Binding Key}"
-                                        IconType="{Binding #PhosphorIconDemo.((vm:PhosphorIconDemoViewModel)DataContext).SelectedIconType, FallbackValue={x:Static icons:PhosphorIconType.Regular}}"
-                                        Width="{Binding #PhosphorIconDemo.((vm:PhosphorIconDemoViewModel)DataContext).IconSize, FallbackValue=24}"
-                                        Height="{Binding #PhosphorIconDemo.((vm:PhosphorIconDemoViewModel)DataContext).IconSize, FallbackValue=24}"/>
+                                    <Border
+                                        HorizontalAlignment="Center"
+                                        Padding="2"
+                                        CornerRadius="5"
+                                        Background="{Binding #PhosphorIconDemo.((vm:PhosphorIconDemoViewModel)DataContext).BackgroundRgbColour, FallbackValue=White}">
+                                        <icons:PhosphorIcon
+                                            Margin="5"
+                                            Color="{Binding #PhosphorIconDemo.((vm:PhosphorIconDemoViewModel)DataContext).IconColour, FallbackValue=Gray}"
+                                            IconName="{Binding Key}"
+                                            IconType="{Binding #PhosphorIconDemo.((vm:PhosphorIconDemoViewModel)DataContext).SelectedIconType, FallbackValue={x:Static icons:PhosphorIconType.Regular}}"
+                                            Width="{Binding #PhosphorIconDemo.((vm:PhosphorIconDemoViewModel)DataContext).IconSize, FallbackValue=24}"
+                                            Height="{Binding #PhosphorIconDemo.((vm:PhosphorIconDemoViewModel)DataContext).IconSize, FallbackValue=24}"/>
+                                    </Border>
                                     <TextBlock
                                         HorizontalAlignment="Center"
                                         Text="{Binding Value}"/>

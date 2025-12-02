@@ -26,10 +26,16 @@ public partial class PhosphorIconDemoViewModel : ViewModelBase
     private int _iconSize;
 
     [ObservableProperty]
-    private HsvColor _colour;
+    private HsvColor _iconColour;
 
     [ObservableProperty]
-    private string _rgbColour;
+    private string _iconRgbColour;
+
+    [ObservableProperty]
+    private HsvColor _backgroundColour;
+
+    [ObservableProperty]
+    private string _backgroundRgbColour;
 
     [ObservableProperty]
     private string? _filter;
@@ -44,8 +50,10 @@ public partial class PhosphorIconDemoViewModel : ViewModelBase
         _selectedIconTypeIndex = 2;
         _selectedIconType = IconTypes[2].Key;
         _iconSize = 24;
-        _colour = new HsvColor(Color.FromRgb(0xFF, 0x00, 0x00));
-        _rgbColour = _colour.ToRgb().ToString();
+        _iconColour = new HsvColor(Color.FromRgb(0xFF, 0x00, 0x00));
+        _iconRgbColour = _iconColour.ToRgb().ToString();
+        _backgroundColour = new HsvColor(Color.FromRgb(0x00, 0x00, 0x00));
+        _backgroundRgbColour = _backgroundColour.ToRgb().ToString();
         _filterCount = Icons.Count;
     }
 
@@ -53,9 +61,14 @@ public partial class PhosphorIconDemoViewModel : ViewModelBase
 
     public List<KeyValuePair<PhosphorIconType, string>> IconTypes { get; } = Enum.GetValues<PhosphorIconType>().Select(t => new KeyValuePair<PhosphorIconType, string>(t, t.ToString())).ToList();
 
-    partial void OnColourChanged(HsvColor value)
+    partial void OnIconColourChanged(HsvColor value)
     {
-        RgbColour = value.ToRgb().ToString();
+        IconRgbColour = value.ToRgb().ToString();
+    }
+
+    partial void OnBackgroundColourChanged(HsvColor value)
+    {
+        BackgroundRgbColour = value.ToRgb().ToString();
     }
 
     partial void OnFilterChanged(string? value)
