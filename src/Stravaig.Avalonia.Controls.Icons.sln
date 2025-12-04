@@ -26,6 +26,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stravaig.Icons.Example", "S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stravaig.Avalonia.Controls.Icons", "Stravaig.Avalonia.Controls.Icons\Stravaig.Avalonia.Controls.Icons.csproj", "{29492B94-726A-4F42-B976-D9FE067A8531}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stravaig.Avalonia.Controls.Icons.Tests", "Stravaig.Avalonia.Controls.Icons.Tests\Stravaig.Avalonia.Controls.Icons.Tests.csproj", "{9E49A515-4602-4612-AE59-BF23A9344B99}"
+EndProject
 Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -42,6 +44,10 @@ Global
 		{03C805E0-8AC5-4322-9548-1D26146F934C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{03C805E0-8AC5-4322-9548-1D26146F934C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{03C805E0-8AC5-4322-9548-1D26146F934C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E49A515-4602-4612-AE59-BF23A9344B99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E49A515-4602-4612-AE59-BF23A9344B99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E49A515-4602-4612-AE59-BF23A9344B99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E49A515-4602-4612-AE59-BF23A9344B99}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

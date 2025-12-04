@@ -69,6 +69,9 @@ $dictEntries = $entries | ForEach-Object {
 
 namespace Stravaig.Avalonia.Controls.Icons;
 
+/// <summary>
+/// Represents the different icons available in the Phosphor library.
+/// </summary>
 public enum PhosphorIconName
 {
 $($enumEntries -join "`n")

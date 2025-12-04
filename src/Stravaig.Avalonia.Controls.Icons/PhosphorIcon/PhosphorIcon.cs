@@ -76,7 +76,6 @@ public class PhosphorIcon : Image
             {
                 Source = sourceImage,
                 Css = css,
-                //CurrentCss = css,
             };
             Source = svg;
         }

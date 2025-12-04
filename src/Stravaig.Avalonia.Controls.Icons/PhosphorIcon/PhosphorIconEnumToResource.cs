@@ -2,7 +2,7 @@ namespace Stravaig.Avalonia.Controls.Icons;
 
 internal static partial class PhosphorIconEnumToResourceMap
 {
-    public static string? GetResourceName(PhosphorIconName name, PhosphorIconType type)
+    internal static string? GetResourceName(PhosphorIconName name, PhosphorIconType type)
     {
         if (IconMap.TryGetValue(name, out var resourceNameFragment))
         {

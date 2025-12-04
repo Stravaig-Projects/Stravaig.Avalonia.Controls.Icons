@@ -3,6 +3,7 @@
   <component name="AvaloniaProject">
     <option name="projectPerEditor">
       <map>
+        <entry key="Stravaig.Avalonia.Controls.Icons.Tests/App.axaml" value="Stravaig.Avalonia.Controls.Icons.Tests/Stravaig.Avalonia.Controls.Icons.Tests.csproj" />
         <entry key="Stravaig.Icons.Example/App.axaml" value="Stravaig.Icons.Example/Stravaig.Icons.Example.csproj" />
         <entry key="Stravaig.Icons.Example/Styles/AppDefaultStyles.axaml" value="Stravaig.Icons.Example/Stravaig.Icons.Example.csproj" />
         <entry key="Stravaig.Icons.Example/Views/MainWindow.axaml" value="Stravaig.Icons.Example/Stravaig.Icons.Example.csproj" />
