@@ -226,7 +226,6 @@ internal static partial class PhosphorIconEnumToResourceMap
             { PhosphorIconName.BookOpen, "book-open" },
             { PhosphorIconName.BookOpenText, "book-open-text" },
             { PhosphorIconName.BookOpenUser, "book-open-user" },
-            { PhosphorIconName.BookUser, "book-user" },
             { PhosphorIconName.Bookmark, "bookmark" },
             { PhosphorIconName.BookmarkSimple, "bookmark-simple" },
             { PhosphorIconName.Bookmarks, "bookmarks" },

@@ -1099,7 +1099,7 @@ public enum PhosphorIconName
         BookOpenText,
 
         /// <Summary>
-        /// Phosphor icon 'book-open-user', available in bold, duotone, fill, and light.
+        /// Phosphor icon 'book-open-user', available in bold, duotone, fill, light, regular, and thin.
         /// </Summary>
         BookOpenUser,
 
@@ -1107,11 +1107,6 @@ public enum PhosphorIconName
         /// Phosphor icon 'books', available in bold, duotone, fill, light, regular, and thin.
         /// </Summary>
         Books,
-
-        /// <Summary>
-        /// Phosphor icon 'book-user', available in regular, and thin.
-        /// </Summary>
-        BookUser,
 
         /// <Summary>
         /// Phosphor icon 'boot', available in bold, duotone, fill, light, regular, and thin.
