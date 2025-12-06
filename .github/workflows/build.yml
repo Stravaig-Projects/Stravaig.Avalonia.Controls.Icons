@@ -102,7 +102,7 @@ jobs:
           dotnet pack ./src/$STRAVAIG_PROJECT/$STRAVAIG_PROJECT.csproj --configuration Release --output ./out/stable --include-symbols --include-source /p:VersionPrefix="$STRAVAIG_PACKAGE_VERSION" -p:IncludeSymbols=true -p:SymbolPackageFormat=snupkg /p:AssemblyVersion=$STRAVAIG_ASSEMBLY_VERSION /p:FileVersion=$STRAVAIG_ASSEMBLY_VERSION
 
       - name: Archive Packages
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: packages
           path: ./out/**
@@ -117,7 +117,7 @@ jobs:
         run: ./build-release-notes.ps1
 
       - name: Archive Release Notes
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: release-information
           path: |
