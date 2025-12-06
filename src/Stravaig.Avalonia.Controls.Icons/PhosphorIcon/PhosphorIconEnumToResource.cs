@@ -1,3 +1,5 @@
+using System.Diagnostics;
+
 namespace Stravaig.Avalonia.Controls.Icons;
 
 internal static partial class PhosphorIconEnumToResourceMap
@@ -17,6 +19,8 @@ internal static partial class PhosphorIconEnumToResourceMap
         }
 
         // Should never happen as the Enum and Dictionary are generated from the same source.
+        Console.WriteLine($"Could not find resource for icon. {name} - {type}.");
+        Debug.Assert(false, $"Could not find resource for icon. {name} - {type}.");
         return null;
     }
 }

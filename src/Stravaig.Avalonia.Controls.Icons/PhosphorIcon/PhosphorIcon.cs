@@ -4,6 +4,7 @@ using Avalonia.Controls;
 using Avalonia.Media;
 using Avalonia.Svg.Skia;
 using Svg.Model;
+using System.Diagnostics;
 
 namespace Stravaig.Avalonia.Controls.Icons;
 
@@ -64,6 +65,8 @@ public class PhosphorIcon : Image
         var resource = GetResourceName();
         if (string.IsNullOrWhiteSpace(resource))
         {
+            Console.WriteLine("Could not generate resource name.");
+            Debug.WriteLine("Could not generate resource name. Setting source to null.");
             Source = null;
             return;
         }
@@ -78,9 +81,16 @@ public class PhosphorIcon : Image
                 Css = css,
             };
             Source = svg;
+            Console.WriteLine($"Loaded resource: {resource} with CSS: {css}");
         }
-        catch
+        catch(Exception ex)
         {
+            Console.WriteLine($"Failed to load resource: {resource}");
+            Console.WriteLine(ex);
+            Console.WriteLine("Setting source to null.");
+            Debug.WriteLine($"Failed to load resource: {resource}");
+            Debug.WriteLine(ex);
+            Debug.WriteLine("Setting source to null.");
             Source = null;
         }
     }
