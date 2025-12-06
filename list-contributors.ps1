@@ -224,7 +224,7 @@ function Get-InitialContributors($AkaFilePath)
 $contributors = Get-InitialContributors -AkaFilePath $AkaFilePath;
 $ignoredNamesList = Get-IgnoredNamesList -IgnoredNamesPath $IgnoredNamesPath -AkaContributors $contributors
 $ignoredEmailsList = Get-IgnoredEmailsList -IgnoredEmailsPath $IgnoredEmailsPath -AkaContributors $contributors
-& git log --format="\`"%ai\`",\`"%an\`",\`"%ae\`",\`"%H\`"" > raw-contributors.csv
+& git log --format="`"%ai`",`"%an`",`"%ae`",`"%H`"" > raw-contributors.csv
 $commits = Import-Csv raw-contributors.csv -Header Time,Name,Email,Hash | Sort-Object Time;
 Remove-Item .\raw-contributors.csv
 
@@ -233,7 +233,8 @@ $totalCommits = $commits.Length;
 for($i = 0; $i -lt $totalCommits; $i++)
 {
     $nextCommit = $commits[$i];
-    $commitTime = [DateTime]::ParseExact($nextCommit.Time, "yyyy-MM-dd HH:mm:ss zzz", [CultureInfo]::InvariantCulture);
+    $nextCommitTime = $nextCommit.Time.Trim("`"");
+    $commitTime = [DateTime]::ParseExact($nextCommitTime, "yyyy-MM-dd HH:mm:ss zzz", [CultureInfo]::InvariantCulture);
 
     if ($i % $commitsPerPercentPoint -eq 0)
     {
@@ -354,9 +355,11 @@ foreach($contributor in $contributors)
 "" | Out-File $OutputFile -Append -Encoding utf8
 
 $firstCommit = $commits[0];
-$firstCommitMsg = [DateTime]::ParseExact($firstCommit.Time, "yyyy-MM-dd HH:mm:ss zzz", [CultureInfo]::InvariantCulture).ToString($DateTimeFormat);  
+$firstCommitTime = $firstCommit.Time.Trim("`"");
+$firstCommitMsg = [DateTime]::ParseExact($firstCommitTime, "yyyy-MM-dd HH:mm:ss zzz", [CultureInfo]::InvariantCulture).ToString($DateTimeFormat);  
 $lastCommit = $commits[$totalCommits - 1];
-$lastCommitMsg = [DateTime]::ParseExact($lastCommit.Time, "yyyy-MM-dd HH:mm:ss zzz", [CultureInfo]::InvariantCulture).ToString($DateTimeFormat);  
+$lastCommitTime = $lastCommit.Time.Trim("`"");
+$lastCommitMsg = [DateTime]::ParseExact($lastCommitTime, "yyyy-MM-dd HH:mm:ss zzz", [CultureInfo]::InvariantCulture).ToString($DateTimeFormat);  
 
 ":octocat: $totalCommits commits in total." | Out-File $OutputFile -Append -Encoding utf8
 "" | Out-File $OutputFile -Append -Encoding utf8

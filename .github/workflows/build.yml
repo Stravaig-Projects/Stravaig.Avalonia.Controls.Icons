@@ -89,7 +89,7 @@ jobs:
         run: dotnet build $STRAVAIG_SOLUTION --configuration Release
        
       - name: Run Tests
-        run: dotnet test src/$STRAVAIG_TESTS/$STRAVAIG_TESTS.csproj --configuration Release --verbosity normal
+        run: dotnet test src/$STRAVAIG_TESTS/$STRAVAIG_TESTS.csproj --configuration Release
        
       - name: Package Preview Release
         run: |
