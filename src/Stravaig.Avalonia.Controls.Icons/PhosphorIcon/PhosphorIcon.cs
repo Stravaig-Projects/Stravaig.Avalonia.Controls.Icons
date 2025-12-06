@@ -81,7 +81,6 @@ public class PhosphorIcon : Image
                 Css = css,
             };
             Source = svg;
-            Console.WriteLine($"Loaded resource: {resource} with CSS: {css}");
         }
         catch(Exception ex)
         {
@@ -94,7 +93,7 @@ public class PhosphorIcon : Image
             Source = null;
         }
     }
-
+ 
     private string BuildCss()
     {
         var rgb = Color.ToRgb();

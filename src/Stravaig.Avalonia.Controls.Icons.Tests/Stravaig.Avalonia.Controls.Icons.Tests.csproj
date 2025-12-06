@@ -19,7 +19,17 @@
         <PackageReference Include="xunit.runner.visualstudio" Version="3.1.5"/>
     </ItemGroup>
 
-    <ItemGroup>
+  <Target Name="LogLinuxBuild" BeforeTargets="Build" Condition="$([MSBuild]::IsOSPlatform('Linux'))">
+    <Message Text="Building on Linux system - using Linux-specific SkiaSharp native assets" Importance="high"/>
+  </Target>
+
+  <ItemGroup Condition="$([MSBuild]::IsOSPlatform('Linux'))">
+    <!-- Pin SkiaSharp and bring native Linux assets -->
+    <PackageReference Include="SkiaSharp" Version="3.119.1" />
+    <PackageReference Include="SkiaSharp.NativeAssets.Linux" Version="3.119.1" />
+  </ItemGroup>
+
+  <ItemGroup>
         <Using Include="Xunit"/>
     </ItemGroup>
 
