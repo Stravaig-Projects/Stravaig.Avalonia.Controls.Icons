@@ -28,6 +28,12 @@ if (-not (Test-Path $outputFolder))
 $sha = $(git rev-list --tags --max-count=1);
 $tag = $(git describe --tags $sha);
 Write-Host "Last deployment was $tag";
+if ([string]::IsNullOrEmpty($tag))
+{
+    $tag = "v0.0.0-preview.0"
+    Write-Host "No previous tag found, assuming $tag";
+}
+
 $parts = $tag.Split("-preview.");
 
 if ($parts.Length -eq 1)
