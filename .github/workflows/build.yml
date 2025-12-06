@@ -74,7 +74,7 @@ jobs:
           echo "Preview Assembly Version: $STRAVAIG_PREVIEW_ASSEMBLY_VERSION"
           echo "Assembly Version: $STRAVAIG_ASSEMBLY_VERSION"
           
-      - uses: actions/setup-dotnet@v3
+      - uses: actions/setup-dotnet@v5
         name: Setup .NET 8, 9 and 10.0
         with:
           dotnet-version: |
