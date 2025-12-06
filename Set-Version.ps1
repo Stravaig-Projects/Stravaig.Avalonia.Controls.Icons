@@ -74,3 +74,5 @@ Write-Host $envContent;
 
 $envContent | Out-File -FilePath $versionEnvFile -Encoding UTF8
 $envContent | Out-File -FilePath $env:GITHUB_ENV -Encoding UTF8 -Append
+
+Exit 0;
