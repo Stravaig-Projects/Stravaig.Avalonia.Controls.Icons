@@ -87,7 +87,7 @@ jobs:
       - name: Run Tests
         run: dotnet test src/$STRAVAIG_TESTS/$STRAVAIG_TESTS.csproj --configuration Release
        
-      - name: Package ${{ env.STRAVAIG_PREVIEW_VERSION }}
+      - name: Package ${{ env.STRAVAIG_PREVIEW_VERSION }} (Preview)
         run: |
           export STRAVAIG_NUGET_VERSION=$STRAVAIG_PREVIEW_VERSION
           dotnet pack ./src/$STRAVAIG_PROJECT/$STRAVAIG_PROJECT.csproj --configuration Release --output ./out/preview --include-symbols --include-source /p:VersionPrefix="$STRAVAIG_PACKAGE_VERSION" --version-suffix "$STRAVAIG_PACKAGE_VERSION_SUFFIX" -p:IncludeSymbols=true -p:SymbolPackageFormat=snupkg /p:AssemblyVersion=$STRAVAIG_PREVIEW_ASSEMBLY_VERSION /p:FileVersion=$STRAVAIG_PREVIEW_ASSEMBLY_VERSION
@@ -161,7 +161,7 @@ jobs:
           Get-ChildItem ./packages/preview/*.nupkg | ForEach-Object {
             $name = $_.FullName;
             Write-Output "Pushing $name";
-            dotnet nuget push "$name" --api-key ${{ secrets.STRAVAIG_NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+            #dotnet nuget push "$name" --api-key ${{ secrets.STRAVAIG_NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
           }
 
       - name: Create Release

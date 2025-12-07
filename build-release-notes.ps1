@@ -1,4 +1,4 @@
-$fullVersion = $Env:STRAVAIG_PACKAGE_FULL_VERSION
+$fullVersion = $Env:STRAVAIG_PACKAGE_VERSION
 
 $currentReleaseNotes = Get-Content "$PSScriptRoot/release-notes/wip-release-notes.md";
 
@@ -20,6 +20,8 @@ for($i = 0; $i -lt $currentReleaseNotes.Length; $i++)
 
 Set-Content "$PSScriptRoot/release-notes/release-notes-$fullVersion.md" $currentReleaseNotes -Encoding UTF8 -Force
 
+write-Host "Updated release notes for version release-notes-$fullVersion.md";
+
 $fullReleaseNotes = Get-Content "$PSScriptRoot/release-notes/full-release-notes.md";
 
 $preamble = $fullReleaseNotes[0..1];
@@ -34,7 +36,10 @@ $fullReleaseNotes = $preamble + $currentReleaseNotesExtract + $existing
 
 Set-Content "$PSScriptRoot/release-notes/full-release-notes.md" $fullReleaseNotes -Encoding UTF8 -Force
 
+Write-Host "Updated full release notes in full-release-notes.md";
+
 $contributors = Get-Content "$PSScriptRoot/contributors.md";
 $releaseBody = $currentReleaseNotes + @("", "---", "") + $contributors
 Set-Content "$PSScriptRoot/release-body.md" $releaseBody -Encoding UTF8 -Force
 
+Write-Host "Updated release body in release-body.md";
