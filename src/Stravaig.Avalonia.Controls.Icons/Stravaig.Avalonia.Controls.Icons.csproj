@@ -4,8 +4,29 @@
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+
+    <YEAR>$([System.DateTime]::Now.Year)</YEAR>
+    <Title>Stravaig Avalonia Icon Controls</Title>
+    <Version>$(STRAVAIG_NUGET_VERSION)</Version>
+    <Authors>Colin Angus Mackay</Authors>
+    <Copyright>©$(YEAR) Colin Angus Mackay. See licence for more information.</Copyright>
+    <PackageProjectUrl>https://stravaig-projects.github.io/Stravaig.Avalonia.Controls.Icons/</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/Stravaig-Projects/Stravaig.Avalonia.Controls.Icons</RepositoryUrl>
+    <PackageIcon>stravaig-icon.png</PackageIcon>
+    <PackageTags>avalonia control icon phosphor</PackageTags>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <PackageReadmeFile>readme.md</PackageReadmeFile>
+    <Description>
+      Icon controls for Avalonia:
+      * PhosphorIcon
+    </Description>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Include="stravaig-icon.png" Pack="true" PackagePath="/" />
+  </ItemGroup>
+  
   <ItemGroup>
     <AvaloniaResource Include="Assets/**" Exclude="Assets/**/.DS_Store" />
   </ItemGroup>

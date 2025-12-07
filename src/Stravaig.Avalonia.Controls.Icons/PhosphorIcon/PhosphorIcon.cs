@@ -65,7 +65,6 @@ public class PhosphorIcon : Image
         var resource = GetResourceName();
         if (string.IsNullOrWhiteSpace(resource))
         {
-            Console.WriteLine("Could not generate resource name.");
             Debug.WriteLine("Could not generate resource name. Setting source to null.");
             Source = null;
             return;
@@ -84,16 +83,13 @@ public class PhosphorIcon : Image
         }
         catch(Exception ex)
         {
-            Console.WriteLine($"Failed to load resource: {resource}");
-            Console.WriteLine(ex);
-            Console.WriteLine("Setting source to null.");
             Debug.WriteLine($"Failed to load resource: {resource}");
             Debug.WriteLine(ex);
             Debug.WriteLine("Setting source to null.");
             Source = null;
         }
     }
- 
+
     private string BuildCss()
     {
         var rgb = Color.ToRgb();

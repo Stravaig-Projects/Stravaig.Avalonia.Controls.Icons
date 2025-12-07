@@ -27,12 +27,3 @@ For an example of how to use this control see the `Stravaig.Icons.Example` demo 
 * `IconType`: `enum PhosphorIconType` The type of icon to display. One of `Thin`, `Light`, `Regular`, `Bold`, `Fill`, or `Duotone`.
 * `IconName`: `enum PhosphorIconName` - The name of the icon to display. The enum values are based on the pascal cased version of the icon name.
 * `Color` - The HsvColor to display the icon.
-
----
-
-## Contributing / Getting Started
-
-* Ensure you have PowerShell 7.1.x or higher installed
-* At a PowerShell prompt
-    * Navigate to the root of this repository
-    * Run `./Install-GitHooks.ps1`
