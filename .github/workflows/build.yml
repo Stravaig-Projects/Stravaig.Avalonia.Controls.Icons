@@ -23,15 +23,6 @@ on:
       - '.gitignore'
 
   workflow_dispatch:
-    inputs:
-      isPublic:
-        description: 'Is Public Release'     
-        required: false
-        default: "false"
-      isPreview:
-        description: 'Is Preview Release'
-        required: false
-        default: "true"
 
 jobs:
 
@@ -96,12 +87,12 @@ jobs:
       - name: Run Tests
         run: dotnet test src/$STRAVAIG_TESTS/$STRAVAIG_TESTS.csproj --configuration Release
        
-      - name: Package Preview Release
+      - name: Package ${{ env.STRAVAIG_PREVIEW_VERSION }}
         run: |
           export STRAVAIG_NUGET_VERSION=$STRAVAIG_PREVIEW_VERSION
           dotnet pack ./src/$STRAVAIG_PROJECT/$STRAVAIG_PROJECT.csproj --configuration Release --output ./out/preview --include-symbols --include-source /p:VersionPrefix="$STRAVAIG_PACKAGE_VERSION" --version-suffix "$STRAVAIG_PACKAGE_VERSION_SUFFIX" -p:IncludeSymbols=true -p:SymbolPackageFormat=snupkg /p:AssemblyVersion=$STRAVAIG_PREVIEW_ASSEMBLY_VERSION /p:FileVersion=$STRAVAIG_PREVIEW_ASSEMBLY_VERSION
 
-      - name: Package Stable Release
+      - name: Package ${{ env.STRAVAIG_STABLE_VERSION }} (Stable)
         run: |
           export STRAVAIG_NUGET_VERSION=$STRAVAIG_STABLE_VERSION
           dotnet pack ./src/$STRAVAIG_PROJECT/$STRAVAIG_PROJECT.csproj --configuration Release --output ./out/stable --include-symbols --include-source /p:VersionPrefix="$STRAVAIG_PACKAGE_VERSION" -p:IncludeSymbols=true -p:SymbolPackageFormat=snupkg /p:AssemblyVersion=$STRAVAIG_ASSEMBLY_VERSION /p:FileVersion=$STRAVAIG_ASSEMBLY_VERSION
@@ -164,7 +155,7 @@ jobs:
         shell: pwsh
         run: Get-Content ./packages/version-info.env | Out-File -FilePath $env:GITHUB_ENV -Encoding UTF8 -Append
 
-      - name: Push package to NuGet
+      - name: Push ${{ env.STRAVAIG_PREVIEW_VERSION }} packages to NuGet
         shell: pwsh
         run: |
           Get-ChildItem ./packages/preview/*.nupkg | ForEach-Object {
