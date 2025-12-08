@@ -13,31 +13,49 @@ namespace Stravaig.Avalonia.Controls.Icons;
 /// </summary>
 public class PhosphorIcon : Image
 {
+    /// <summary>
+    /// Defines the <see cref="IconType"/> property.
+    /// </summary>
     public static readonly StyledProperty<PhosphorIconType> IconTypeProperty =
         AvaloniaProperty.Register<PhosphorIcon, PhosphorIconType>(
             nameof(IconType),
             defaultValue: PhosphorIconType.Regular);
 
+    /// <summary>
+    /// Defines the <see cref="IconName"/> property.
+    /// </summary>
     public static readonly StyledProperty<PhosphorIconName> IconNameProperty =
         AvaloniaProperty.Register<PhosphorIcon, PhosphorIconName>(
             nameof(IconName));
 
+    /// <summary>
+    /// Defines the <see cref="Color"/> property.
+    /// </summary>
     public static readonly StyledProperty<HsvColor> ColorProperty =
         AvaloniaProperty.Register<PhosphorIcon, HsvColor>(
             nameof(Color));
 
+    /// <summary>
+    /// Gets or sets the type of icon.
+    /// </summary>
     public PhosphorIconType IconType
     {
         get => GetValue(IconTypeProperty);
         set => SetValue(IconTypeProperty, value);
     }
 
+    /// <summary>
+    /// Gets or sets the name of the icon.
+    /// </summary>
     public PhosphorIconName IconName
     {
         get => GetValue(IconNameProperty);
         set => SetValue(IconNameProperty, value);
     }
 
+    /// <summary>
+    /// Gets or sets the color of the icon.
+    /// </summary>
     public HsvColor Color
     {
         get => GetValue(ColorProperty);
@@ -51,6 +69,9 @@ public class PhosphorIcon : Image
         ColorProperty.Changed.AddClassHandler<PhosphorIcon>((x, _) => x.UpdateImageSource());
     }
 
+    /// <summary>
+    /// Creates a new instance of the control.
+    /// </summary>
     public PhosphorIcon()
     {
         // Ensure initial Source is set based on default properties
