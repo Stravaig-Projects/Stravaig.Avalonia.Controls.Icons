@@ -8,6 +8,8 @@ These icons come from the [Phosphor Icons](https://phosphoricons.com) collection
 
 For an example of how to use this control see the `Stravaig.Icons.Example` demo project.
 
+![Phosphor Icons Example](https://raw.githubusercontent.com/Stravaig-Projects/Stravaig.Avalonia.Controls.Icons/main/docs/docs/PhosphorIconsExample.png)
+
 ### Usage
 
 ```xml
