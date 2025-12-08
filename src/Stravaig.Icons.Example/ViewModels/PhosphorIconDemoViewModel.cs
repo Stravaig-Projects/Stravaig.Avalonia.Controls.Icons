@@ -32,6 +32,9 @@ public partial class PhosphorIconDemoViewModel : ViewModelBase
     private string _iconRgbColour;
 
     [ObservableProperty]
+    private IBrush _iconBrush;
+
+    [ObservableProperty]
     private HsvColor _backgroundColour;
 
     [ObservableProperty]
@@ -50,8 +53,10 @@ public partial class PhosphorIconDemoViewModel : ViewModelBase
         _selectedIconTypeIndex = 2;
         _selectedIconType = IconTypes[2].Key;
         _iconSize = 24;
-        _iconColour = new HsvColor(Color.FromRgb(0xFF, 0x00, 0x00));
-        _iconRgbColour = _iconColour.ToRgb().ToString();
+        var rgb = Color.FromRgb(0xFF, 0x00, 0x00);
+        _iconColour = new HsvColor(rgb);
+        _iconRgbColour = rgb.ToString();
+        _iconBrush = new SolidColorBrush(rgb);
         _backgroundColour = new HsvColor(Color.FromRgb(0x00, 0x00, 0x00));
         _backgroundRgbColour = _backgroundColour.ToRgb().ToString();
         _filterCount = Icons.Count;
@@ -63,7 +68,14 @@ public partial class PhosphorIconDemoViewModel : ViewModelBase
 
     partial void OnIconColourChanged(HsvColor value)
     {
-        IconRgbColour = value.ToRgb().ToString();
+        var rgb = value.ToRgb();
+        var colourName = rgb.ToString();
+        if (colourName.StartsWith("#"))
+        {
+            colourName = colourName.Substring(3).ToUpperInvariant();
+        }
+        IconRgbColour = colourName;
+        IconBrush = new SolidColorBrush(rgb);
     }
 
     partial void OnBackgroundColourChanged(HsvColor value)

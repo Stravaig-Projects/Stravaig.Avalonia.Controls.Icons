@@ -1,6 +1,7 @@
 using System;
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.Documents;
 using Avalonia.Media;
 using Avalonia.Svg.Skia;
 using Svg.Model;
@@ -29,11 +30,10 @@ public class PhosphorIcon : Image
             nameof(IconName));
 
     /// <summary>
-    /// Defines the <see cref="Color"/> property.
+    /// Defines the <see cref="Foreground"/> property.
     /// </summary>
-    public static readonly StyledProperty<HsvColor> ColorProperty =
-        AvaloniaProperty.Register<PhosphorIcon, HsvColor>(
-            nameof(Color));
+    public static readonly StyledProperty<IBrush?> ForegroundProperty =
+        TextElement.ForegroundProperty.AddOwner<PhosphorIcon>();
 
     /// <summary>
     /// Gets or sets the type of icon.
@@ -54,19 +54,19 @@ public class PhosphorIcon : Image
     }
 
     /// <summary>
-    /// Gets or sets the color of the icon.
+    /// The foreground colour of the icon. (Only SolidColorBrush is supported.)
     /// </summary>
-    public HsvColor Color
+    public IBrush? Foreground
     {
-        get => GetValue(ColorProperty);
-        set => SetValue(ColorProperty, value);
+        get => GetValue(TextElement.ForegroundProperty);
+        set => SetValue(TextElement.ForegroundProperty, value);
     }
 
     static PhosphorIcon()
     {
         IconTypeProperty.Changed.AddClassHandler<PhosphorIcon>((x, _) => x.UpdateImageSource());
         IconNameProperty.Changed.AddClassHandler<PhosphorIcon>((x, _) => x.UpdateImageSource());
-        ColorProperty.Changed.AddClassHandler<PhosphorIcon>((x, _) => x.UpdateImageSource());
+        ForegroundProperty.Changed.AddClassHandler<PhosphorIcon>((x, _) => x.UpdateImageSource());
     }
 
     /// <summary>
@@ -112,9 +112,5 @@ public class PhosphorIcon : Image
     }
 
     private string BuildCss()
-    {
-        var rgb = Color.ToRgb();
-        var css = $".Stravaig {{ color: rgb({rgb.R}, {rgb.G}, {rgb.B}); }}";
-        return css;
-    }
+        => PhosphorIconBrushHelper.ToCss(Foreground ?? Brushes.Black);
 }

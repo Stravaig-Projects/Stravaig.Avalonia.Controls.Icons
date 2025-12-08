@@ -17,7 +17,7 @@ For an example of how to use this control see the `Stravaig.Icons.Example` demo 
 
 <!-- In the main body of your XAML -->
 <icons:PhosphorIcon
-    Color="Gray"
+    Foreground="Gray"
     IconName="Acorn"
     IconType="Duotone"/>
 ```
@@ -25,5 +25,5 @@ For an example of how to use this control see the `Stravaig.Icons.Example` demo 
 ### Properties
 
 * `IconType`: `enum PhosphorIconType` The type of icon to display. One of `Thin`, `Light`, `Regular`, `Bold`, `Fill`, or `Duotone`.
-* `IconName`: `enum PhosphorIconName` - The name of the icon to display. The enum values are based on the pascal cased version of the icon name.
-* `Color` - The HsvColor to display the icon.
+* `IconName`: `enum PhosphorIconName` The name of the icon to display. The enum values are based on the pascal cased version of the icon name.
+* `Foreground`: `IBrush` The brush to use to display the icon. Note: Only SolidColorBrush is supported.

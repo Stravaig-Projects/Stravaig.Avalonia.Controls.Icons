@@ -67,6 +67,7 @@
                         MinWidth="256"
                         Value="{Binding IconSize}"/>
                     <NumericUpDown
+                        Foreground="AliceBlue"
                         Margin="5"
                         Minimum="8"
                         Maximum="256"
@@ -154,7 +155,7 @@
                                         Background="{Binding #PhosphorIconDemo.((vm:PhosphorIconDemoViewModel)DataContext).BackgroundRgbColour, FallbackValue=White}">
                                         <icons:PhosphorIcon
                                             Margin="5"
-                                            Color="{Binding #PhosphorIconDemo.((vm:PhosphorIconDemoViewModel)DataContext).IconColour, FallbackValue=Gray}"
+                                            Foreground="{Binding #PhosphorIconDemo.((vm:PhosphorIconDemoViewModel)DataContext).IconBrush, FallbackValue={x:Static Brushes.Gray}}"
                                             IconName="{Binding Key}"
                                             IconType="{Binding #PhosphorIconDemo.((vm:PhosphorIconDemoViewModel)DataContext).SelectedIconType, FallbackValue={x:Static icons:PhosphorIconType.Regular}}"
                                             Width="{Binding #PhosphorIconDemo.((vm:PhosphorIconDemoViewModel)DataContext).IconSize, FallbackValue=24}"

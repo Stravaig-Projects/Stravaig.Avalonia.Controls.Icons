@@ -29,7 +29,9 @@
   </ItemGroup>
   
   <ItemGroup>
-    <AvaloniaResource Include="Assets/**" Exclude="Assets/**/.DS_Store" />
+    <AvaloniaResource
+      Include="Assets/**"
+      Exclude="Assets/**/.DS_Store" />
   </ItemGroup>
 
   <ItemGroup>

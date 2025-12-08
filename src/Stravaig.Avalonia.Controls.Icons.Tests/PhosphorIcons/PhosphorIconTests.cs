@@ -14,7 +14,8 @@ public class PhosphorIconTests
         var icon = new PhosphorIcon();
         icon.IconName.ShouldBe(PhosphorIconName.Acorn);
         icon.IconType.ShouldBe(PhosphorIconType.Regular);
-        icon.Color.ShouldBe(new HsvColor(0, 0, 0, 0));
+        icon.Foreground.ShouldBeOfType<SolidColorBrush>()
+            .Color.ShouldBe(Colors.Black);
         icon.IsVisible.ShouldBeTrue();
         icon.Source.ShouldNotBeNull();
     }
