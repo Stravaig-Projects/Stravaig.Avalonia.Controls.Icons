@@ -1,3 +1,4 @@
+using Avalonia.Headless.XUnit;
 using Avalonia.Media;
 using Shouldly;
 using System.Diagnostics.CodeAnalysis;
@@ -15,7 +16,7 @@ public class PhosphorIconBrushHelperTests
         _output = output;
     }
 
-    [Theory]
+    [AvaloniaTheory]
     [InlineData(0, 0, 0)]
     [InlineData(255, 0, 0)]
     [InlineData(0, 255, 0)]
@@ -29,7 +30,7 @@ public class PhosphorIconBrushHelperTests
         css.ShouldContain($"rgb({r}, {g}, {b})");
     }
 
-    [Theory]
+    [AvaloniaTheory]
     [InlineData(0, 0, 0)]
     [InlineData(255, 0, 0)]
     [InlineData(0, 255, 0)]
@@ -45,7 +46,7 @@ public class PhosphorIconBrushHelperTests
         css.ShouldContain($"rgb({r}, {g}, {b})");
     }
 
-    [Fact]
+    [AvaloniaFact]
     public void ToCss_WhenBrushIsNotSupported_ReturnsBlackCssFragment()
     {
         var brush = new DrawingBrush();
