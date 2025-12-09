@@ -21,28 +21,45 @@
             IsExpanded="{Binding IsExpanded}"
             HorizontalAlignment="Stretch">
             <Expander.Header>
-                <TextBlock Classes="H1" Text="Phosphor Icons"/>
+                <StackPanel Orientation="Horizontal">
+                    <icons:PhosphorIcon
+                        VerticalAlignment="Center"
+                        IconName="PhosphorLogo"
+                        IconType="Duotone"
+                        Width="20"
+                        Foreground="#bcadaf"
+                        Margin="5"/>
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        Classes="H1"
+                        Margin="5"
+                        Text="Phosphor Icons"/>
+                </StackPanel>
             </Expander.Header>
             <StackPanel Orientation="Vertical">
                 <StackPanel
                     Margin="5"
                     Orientation="Horizontal">
                     <TextBlock
-                        Margin="5"
-                        VerticalAlignment="Center"
-                        Classes="H2"
+                        Classes="AdjustmentLabel"
                         Text="Style:"/>
                     <ComboBox ItemsSource="{Binding IconTypes}"
                               SelectedIndex="{Binding SelectedIconTypeIndex}">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
-                                    <icons:PhosphorIcon
-                                        Margin="5"
-                                        Width="16"
-                                        Height="16"
-                                        IconName="Acorn"
-                                        IconType="{Binding Key}"/>
+                                    <Border
+                                        CornerRadius="3"
+                                        Margin="0 0 5 0"
+                                        Background="LightYellow">
+                                        <icons:PhosphorIcon
+                                            Margin="5"
+                                            Width="16"
+                                            Height="16"
+                                            IconName="Acorn"
+                                            Foreground="DarkSlateGray"
+                                            IconType="{Binding Key}"/>
+                                    </Border>
                                     <TextBlock
                                         VerticalAlignment="Center"
                                         Text="{Binding Value}"/>
@@ -56,9 +73,7 @@
                     Margin="5"
                     Orientation="Horizontal">
                     <TextBlock
-                        Margin="5"
-                        Classes="H2"
-                        VerticalAlignment="Center"
+                        Classes="H2 AdjustmentLabel"
                         Text="Size:"/>
                     <Slider
                         HorizontalAlignment="Stretch"
@@ -81,7 +96,9 @@
                 <StackPanel
                     Margin="5"
                     Orientation="Horizontal">
-                    <TextBlock Classes="H2" Margin="5" Text="Icon Colour:"/>
+                    <TextBlock
+                        Classes="H2 AdjustmentLabel"
+                        Text="Icon Colour:"/>
                     <ColorPicker
                         ColorModel="Rgba"
                         Width="200"
@@ -95,7 +112,9 @@
                 <StackPanel
                     Margin="5"
                     Orientation="Horizontal">
-                    <TextBlock Classes="H2" Margin="5" Text="Background Colour:"/>
+                    <TextBlock
+                        Classes="H2 AdjustmentLabel"
+                        Text="Background Colour:"/>
                     <ColorPicker
                         ColorModel="Rgba"
                         Width="200"
@@ -110,9 +129,7 @@
                     Margin="5"
                     Orientation="Horizontal">
                     <TextBlock
-                        VerticalAlignment="Center"
-                        Classes="H2"
-                        Margin="5"
+                        Classes="H2 AdjustmentLabel"
                         Text="Filter:"/>
                     <TextBox
                         VerticalAlignment="Center"

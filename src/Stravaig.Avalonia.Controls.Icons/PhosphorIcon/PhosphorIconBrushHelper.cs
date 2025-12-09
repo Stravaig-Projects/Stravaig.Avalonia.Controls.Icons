@@ -1,4 +1,5 @@
 using Avalonia.Media;
+using Avalonia.Media.Immutable;
 
 namespace Stravaig.Avalonia.Controls.Icons;
 
@@ -7,7 +8,7 @@ internal static class PhosphorIconBrushHelper
     public static string ToCss(IBrush brush)
     {
         var rgb = new Color(255, 0, 0, 0);
-        if (brush is SolidColorBrush solidColorBrush)
+        if (brush is ISolidColorBrush solidColorBrush)
         {
             // Use the colour of the brush.
             rgb = solidColorBrush.Color;
