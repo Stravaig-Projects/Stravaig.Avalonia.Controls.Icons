@@ -40,6 +40,11 @@
                 <StackPanel
                     Margin="5"
                     Orientation="Horizontal">
+                    <icons:PhosphorIcon
+                        Foreground="{DynamicResource PrimaryText}"
+                        IconName=""
+                        IconType="Duotone"
+                        Width="16"/>
                     <TextBlock
                         Classes="AdjustmentLabel"
                         Text="Style:"/>
@@ -72,6 +77,11 @@
                 <StackPanel
                     Margin="5"
                     Orientation="Horizontal">
+                    <icons:PhosphorIcon
+                        Foreground="{DynamicResource PrimaryText}"
+                        IconName="Resize"
+                        IconType="Duotone"
+                        Width="16"/>
                     <TextBlock
                         Classes="H2 AdjustmentLabel"
                         Text="Size:"/>
@@ -96,6 +106,11 @@
                 <StackPanel
                     Margin="5"
                     Orientation="Horizontal">
+                    <icons:PhosphorIcon
+                        Foreground="{DynamicResource PrimaryText}"
+                        IconName="Palette"
+                        IconType="Duotone"
+                        Width="16"/>
                     <TextBlock
                         Classes="H2 AdjustmentLabel"
                         Text="Icon Colour:"/>
@@ -112,6 +127,11 @@
                 <StackPanel
                     Margin="5"
                     Orientation="Horizontal">
+                    <icons:PhosphorIcon
+                        Foreground="{DynamicResource PrimaryText}"
+                        IconName="Palette"
+                        IconType="Duotone"
+                        Width="16"/>
                     <TextBlock
                         Classes="H2 AdjustmentLabel"
                         Text="Background Colour:"/>
@@ -128,6 +148,11 @@
                 <StackPanel
                     Margin="5"
                     Orientation="Horizontal">
+                    <icons:PhosphorIcon
+                        Foreground="{DynamicResource PrimaryText}"
+                        IconName="Faders"
+                        IconType="Duotone"
+                        Width="16"/>
                     <TextBlock
                         Classes="H2 AdjustmentLabel"
                         Text="Filter:"/>
