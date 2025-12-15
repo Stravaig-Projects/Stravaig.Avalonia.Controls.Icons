@@ -140,13 +140,13 @@ jobs:
           fetch-depth: 1
 
       - name: Download Packages
-        uses: actions/download-artifact@v6
+        uses: actions/download-artifact@v7
         with:
           name: packages
           path: ./packages
 
       - name: Download Release Information
-        uses: actions/download-artifact@v6
+        uses: actions/download-artifact@v7
         with:
           name: release-information
           path: ./release-information
