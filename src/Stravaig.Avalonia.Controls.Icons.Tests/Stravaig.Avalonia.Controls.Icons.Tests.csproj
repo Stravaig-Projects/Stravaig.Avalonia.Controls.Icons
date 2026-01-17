@@ -9,7 +9,7 @@
 
     <ItemGroup>
         <PackageReference Include="Avalonia" Version="11.3.9" />
-        <PackageReference Include="Avalonia.Headless.XUnit" Version="11.3.9" />
+        <PackageReference Include="Avalonia.Headless.XUnit" Version="11.3.11" />
         <PackageReference Include="Avalonia.Themes.Fluent" Version="11.3.9"/>
         <PackageReference Include="coverlet.collector" Version="6.0.4"/>
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.0.1"/>
